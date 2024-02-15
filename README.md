@@ -96,6 +96,105 @@ Description:-
 ![App Screenshot](MicrosoftTeams-image.png)
 *****************************************************************************************************************************************
 
+**User_Detail table**
+
+CREATE TABLE User_Detail (
+    UserID INT IDENTITY(1,1) PRIMARY KEY,
+    Username VARCHAR(255) UNIQUE,
+    Image VARCHAR(255),
+    Email VARCHAR(255),
+    Password VARCHAR(255),
+    ProfileDescription TEXT,
+    ActiveStatus BIT
+);
+
+
+
+**Food Details**
+
+CREATE TABLE FoodDonationPost (
+    PostID INT IDENTITY(1,1) PRIMARY KEY,
+    UserID INT,
+    FoodType VARCHAR(255),
+    Latitude DECIMAL(9, 6),
+    Longitude DECIMAL(9, 6),
+    TimeAvailable DATETIME,
+    Post_Status bit,
+    CreatedAt TIMESTAMP,
+    FOREIGN KEY (UserID) REFERENCES User_Detail(UserID)
+);
+
+
+**Pickup Details**
+
+CREATE TABLE PickupStatus (
+    PickupStatusID INT IDENTITY(1,1) PRIMARY KEY,
+    PostID INT,
+    PickedUpByUserID INT,
+    PickedUpDateTime DATETIME,
+    FOREIGN KEY (PostID) REFERENCES FoodDonationPost(PostID),
+    FOREIGN KEY (PickedUpByUserID) REFERENCES User_Detail(UserID)
+);
+ 
+
+**Conversation Table**
+
+CREATE TABLE Conversation (
+    ConversationID INT IDENTITY(1,1) PRIMARY KEY,
+    User1ID INT,
+    User2ID INT,
+    FOREIGN KEY (User1ID) REFERENCES User_Detail(UserID),
+    FOREIGN KEY (User2ID) REFERENCES User_Detail(UserID)
+);
+
+**ChatMessage datail**
+
+CREATE TABLE ChatMessage (
+    MessageID INT IDENTITY(1,1) PRIMARY KEY,
+    ConversationID INT,
+    SenderUserID INT,
+    ReceiverUserID INT,
+    MessageContent TEXT,
+    Timestamp TIMESTAMP,
+    FOREIGN KEY (ConversationID) REFERENCES Conversation(ConversationID),
+    FOREIGN KEY (SenderUserID) REFERENCES User_Detail(UserID),
+    FOREIGN KEY (ReceiverUserID) REFERENCES User_Detail(UserID)
+);
+
+**Like Table Detail**
+CREATE TABLE LikeTable (
+    LikeID INT  IDENTITY(1,1) PRIMARY KEY,
+    UserID INT,
+    PostID INT,
+    CreatedAt TIMESTAMP,
+    FOREIGN KEY (UserID) REFERENCES User_Detail(UserID),
+    FOREIGN KEY (PostID) REFERENCES FoodDonationPost(PostID)
+);
+
+
+**FeedBack Table**
+CREATE TABLE Comment (
+    CommentID INT IDENTITY(1,1) PRIMARY KEY,
+    UserID INT,
+    PostID INT,
+    CommentContent TEXT,
+    CreatedAt TIMESTAMP,
+    FOREIGN KEY (UserID) REFERENCES User_Detail(UserID),
+    FOREIGN KEY (PostID) REFERENCES FoodDonationPost(PostID)
+);
+
+**Feedback Deatils table**
+CREATE TABLE FeedbackRating (
+    FeedbackRatingID INT IDENTITY(1,1) PRIMARY KEY,
+    RatedUserID INT,
+    RatingUserID INT,
+    FeedbackContent TEXT,
+    Rating INT,
+    CreatedAt TIMESTAMP,
+    FOREIGN KEY (RatedUserID) REFERENCES User_Detail(UserID),
+    FOREIGN KEY (RatingUserID) REFERENCES User_Detail(UserID)
+);
+***************************************************************************************************************************************
 **Procedure** 
     **every time user will insert new data using "Insert Query" . Instead of Insert query we give to this task will do our procedure**
 
