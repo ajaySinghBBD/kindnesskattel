@@ -204,6 +204,25 @@ AS
 
         END;
 
+ **Function**
+
+ CREATE FUNCTION UserProfile (
+    @UserID INT
+)
+RETURNS TABLE
+AS
+RETURN
+    SELECT 
+       	Username,
+       	Image,
+	ProfileDescription,
+	ActiveStatus
+ 
+    FROM
+        User_Detail
+    WHERE
+        UserID = @UserID;
+
 
 	
 
