@@ -1,6 +1,6 @@
 **Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**
 
- **Project name:- "KindnessKettle"**buhbguy
+ **Project name:- "KindnessKettle"**
  
 Description:- 
 		"KindnessKettle" is a heartwarming platform where generosity meets simplicity.
