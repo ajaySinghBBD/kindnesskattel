@@ -100,10 +100,10 @@ Description:-
 
 CREATE TABLE User_Detail (
     UserID INT IDENTITY(1,1) PRIMARY KEY,
-    Username VARCHAR(255) UNIQUE,
+    Username VARCHAR(255),
     Image VARCHAR(255),
-    Email VARCHAR(255),
-    Password VARCHAR(255),
+    Email VARCHAR(20) UNIQUE,
+    Password VARCHAR(20),
     ProfileDescription TEXT,
     ActiveStatus BIT
 );
@@ -115,7 +115,7 @@ CREATE TABLE User_Detail (
 CREATE TABLE FoodDonationPost (
     PostID INT IDENTITY(1,1) PRIMARY KEY,
     UserID INT,
-    FoodType VARCHAR(255),
+    FoodType VARCHAR(25),
     Latitude DECIMAL(9, 6),
     Longitude DECIMAL(9, 6),
     TimeAvailable DATETIME,
