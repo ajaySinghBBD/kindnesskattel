@@ -20,7 +20,6 @@ Description:-
    - `image      `: profile of the user.
    - `Email`: Email address of the user.
    - `Password`: Encrypted password for user authentication.
-   - `Role`: Denotes the role of the user (Donor, NGO, Individual).
    - `ProfileDescription`: A brief description or bio provided by the user.
    - `ActiveStatus`: Indicates whether the user is currently active or not.
  
@@ -42,12 +41,7 @@ Description:-
 		 user who picked up the food items.
 	   - `PickedUpDateTime` (Nullable): Timestamp indicating when the food items were picked up.	
 
-4. /********** Notification Table:
-   - NotificationID (Primary Key): Unique identifier for each notification.
-   - PostID (Foreign Key): References the FoodDonationPost table to link the notification to a specific post.
-   - Message: The content of the notification message (e.g., "New food donation post available").
-   - CreatedAt: Timestamp indicating when the notification was created.
-   - IsRead: Indicates whether the notification has been read. *****/
+
  
 --------------------------------------------------------------------------------------------------
  
